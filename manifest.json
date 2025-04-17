@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Froala HTML Formatter",
+  "version": "1.0",
+  "description": "Injects CodeMirror into Froala code view and formats HTML with auto-tag fixing and indentation.",
+
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "contextMenus",
+    "storage",
+    "webNavigation"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_title": "Froala HTML Formatter"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "all_frames": true,
+      "match_about_blank": true,
+      "run_at": "document_idle",
+      "js": [
+        "codemirror.js",
+        "xml.js",
+        "closetag.js",
+        "searchcursor.js",
+        "matchtag.js",
+        "matchtags.js",
+        "js-beautify.js",
+        "content.js"
+      ],
+      "css": ["codemirror.css"]
+    }
+  ]
+}
